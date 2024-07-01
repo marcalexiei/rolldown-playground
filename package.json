@@ -1,0 +1,22 @@
+{
+  "name": "rolldown-playground",
+  "version": "0.0.1",
+  "main": "index.js",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "build": "NODE_ENV=production && rolldown -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "rolldown": "^0.10.5"
+  },
+  "dependencies": {
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "author": "Marco Pasqualetti <marco.pasqualetti@live.com>",
+  "license": "MIT"
+}
