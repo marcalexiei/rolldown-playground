@@ -2,21 +2,28 @@
   "name": "rolldown-playground",
   "version": "0.0.1",
   "main": "index.js",
-  "description": "",
+  "description": "Trying out rolldown",
   "type": "module",
   "scripts": {
-    "build": "NODE_ENV=production && rolldown -c",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "NODE_ENV=production rolldown -c",
+    "test": "node --eval \"assert(!!(fs.statSync('dist/index.js')), true);\"",
+    "format": "prettier . --check",
+    "format:fix": "prettier . --write"
   },
   "devDependencies": {
-    "rolldown": "^0.10.5"
+    "@marcalexiei/prettier-config": "1.1.1",
+    "@types/node": "22.14.1",
+    "rolldown": "1.0.0-beta.7",
+    "typescript": "5.8.3"
   },
   "dependencies": {
-    "@types/react": "18.3.3",
-    "@types/react-dom": "18.3.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.1.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
   },
   "author": "Marco Pasqualetti <marco.pasqualetti@live.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677",
+  "prettier": "@marcalexiei/prettier-config"
 }

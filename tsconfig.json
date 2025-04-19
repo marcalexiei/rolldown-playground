@@ -1,0 +1,12 @@
+{
+  "include": ["src", "rolldown.config.ts"],
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "jsx": "react-jsx",
+
+    "target": "ESNext",
+
+    "esModuleInterop": true
+  }
+}
