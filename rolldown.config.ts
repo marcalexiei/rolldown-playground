@@ -4,7 +4,7 @@ import { defineConfig } from 'rolldown';
 export default defineConfig({
   input: 'src/index',
   output: { dir: 'dist', format: 'esm' },
-  external: ['react', 'react-dom'],
+  external: ['react/jsx-runtime', 'react-dom/client'],
   plugins: [
     {
       name: 'clean-dist',
