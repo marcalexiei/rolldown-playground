@@ -17,10 +17,49 @@ env:
   CI: true
 
 jobs:
-  test:
-    name: Test
+  example_list:
+    name: Get examples names
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 1
+
+    outputs:
+      names: ${{ steps.find_folder.outputs.names }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - id: find_folder
+        working-directory: examples
+        # produces the list of folder inside examples without leading `./` and trailing `/`:
+        # ```text
+        # tuono-tutorial
+        # with-tailwind
+        # tuono-app
+        # with-mdx
+        # ```
+        #
+        # after, using `jq` the output is converted into a JSON array:
+        # ```json
+        # ["tuono-tutorial","with-tailwind","tuono-app","with-mdx"]
+        # ```
+        #
+        # and added to `$GITHUB_OUTPUT` env variable:
+        run: |
+          NAMES=$(find . -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
+          echo "names=$(echo "$NAMES" | jq -R -s -c 'split("\n")[:-1]')" >> "$GITHUB_OUTPUT"
+
+  test:
+    needs:
+      - example_list
+
+    strategy:
+      matrix:
+        example_name: ${{ fromJson(needs.example_list.outputs.names) }}
+
+    name: 'Test `${{ matrix.example_name }}` example'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
       - name: Checkout
@@ -30,15 +69,17 @@ jobs:
         uses: ./.github/actions/install-dependencies
 
       - name: Run build
+        working-directory: ./examples/${{ matrix.example_name }}
         run: pnpm run build
 
       - name: Run test
+        working-directory: ./examples/${{ matrix.example_name }}
         run: pnpm run test
 
   check:
     name: Code check
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 5
 
     strategy:
       fail-fast: true
@@ -59,6 +100,7 @@ jobs:
   ci-ok:
     name: CI OK
     runs-on: ubuntu-latest
+    timeout-minutes: 1
     if: always()
     needs:
       - test
