@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "NODE_ENV=production rolldown -c",
-    "test": "node --eval \"assert(!!(fs.statSync('dist/index.js')), true);\""
+    "test": "node --experimental-strip-types --no-warnings --test tests/index.spec.ts",
+    "test:update": "node --experimental-strip-types --no-warnings --test-update-snapshots tests/index.spec.ts"
   },
   "dependencies": {
     "@types/react": "19.1.3",

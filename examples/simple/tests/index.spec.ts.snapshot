@@ -1,0 +1,17 @@
+exports[`example-simple > produces \`dist/index.js\` 1`] = `
+[
+  "import { createRoot } from \\"react-dom/client\\";",
+  "import { Fragment, jsx } from \\"react/jsx-runtime\\";",
+  "",
+  "//#region src/App.tsx",
+  "function App() {",
+  "\\treturn /* @__PURE__ */ jsx(Fragment, { children: \\"App\\" });",
+  "}",
+  "",
+  "//#endregion",
+  "//#region src/index.tsx",
+  "createRoot(document.querySelector(\\"#application\\")).render(/* @__PURE__ */ jsx(App, {}));",
+  "",
+  "//#endregion"
+]
+`;
