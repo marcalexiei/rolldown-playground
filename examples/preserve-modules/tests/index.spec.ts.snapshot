@@ -1,0 +1,33 @@
+exports[`example-preserve-modules > produces \"dist/entry-a.js\" 1`] = `
+[
+  "import { isNumber } from \\"./lib/utils.js\\";",
+  "",
+  "//#region src/entry-a.ts",
+  "console.info(\\"is \`\\\\\\"a\\\\\\"\` a number?\\", isNumber(\\"a\\"));",
+  "console.info(\\"is \`1\` a number?\\", isNumber(1));",
+  "",
+  "//#endregion"
+]
+`;
+
+exports[`example-preserve-modules > produces \"dist/entry-b.js\" 1`] = `
+[
+  "//#region src/entry-b.ts",
+  "const A = 1;",
+  "",
+  "//#endregion",
+  "export { A };"
+]
+`;
+
+exports[`example-preserve-modules > produces \"dist/lib/utils.js\" 1`] = `
+[
+  "//#region src/lib/utils.ts",
+  "function isNumber(v) {",
+  "\\treturn typeof v === \\"number\\" && !Number.isNaN(v);",
+  "}",
+  "",
+  "//#endregion",
+  "export { isNumber };"
+]
+`;

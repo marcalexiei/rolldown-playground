@@ -5,9 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "NODE_ENV=production rolldown -c",
-    "test": "node --eval \"assert(!!(fs.statSync('dist/index.js')), true);\"",
-    "format": "prettier . --check",
-    "format:fix": "prettier . --write"
+    "test": "node --eval \"assert(!!(fs.statSync('dist/index.js')), true);\""
   },
   "dependencies": {
     "@types/react": "19.1.3",
