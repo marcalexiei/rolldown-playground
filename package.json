@@ -11,9 +11,9 @@
   },
   "devDependencies": {
     "@marcalexiei/prettier-config": "1.1.1",
-    "@types/node": "22.15.29",
+    "@types/node": "22.15.30",
     "prettier": "3.5.3",
-    "rolldown": "1.0.0-beta.10",
+    "rolldown": "1.0.0-beta.11",
     "typescript": "5.8.3"
   },
   "license": "MIT",
