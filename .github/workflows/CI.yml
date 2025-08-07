@@ -33,10 +33,8 @@ jobs:
         working-directory: examples
         # produces the list of folder inside examples without leading `./` and trailing `/`:
         # ```text
-        # tuono-tutorial
-        # with-tailwind
-        # tuono-app
-        # with-mdx
+        # preserve-modules
+        # simple
         # ```
         #
         # after, using `jq` the output is converted into a JSON array:
